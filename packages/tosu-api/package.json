@@ -20,7 +20,7 @@
     "generate:src": "tsx scripts/generate-openapi.ts && prettier -cw src",
     "generate": "yarn generate:def && yarn generate:src",
     "build": "yarn generate && tsc -b && dumble",
-    "clean": "rimraf dist tsconfig.tsbuildinfo"
+    "clean": "rimraf dist tsconfig.tsbuildinfo openapi.json schemas.json"
   },
   "dependencies": {
     "openapi-fetch": "^0.14.0",

@@ -26,7 +26,7 @@ This repo use Yarn 4 to manage, make sure you enabled Corepack then you can use 
 Run the following commands to generate some source code files before you start developing:
 
 ```bash
-yarn install
+yarn
 yarn build
 ```
 
