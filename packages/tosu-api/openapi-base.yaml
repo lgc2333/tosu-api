@@ -26,6 +26,8 @@ paths:
         required: false
     get:
       description: Show content of the file, or show list of files for a folder
+    content:
+      text/html:
 
   /json/sc:
     get:

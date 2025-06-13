@@ -4225,7 +4225,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tosu-api-types@workspace:packages/tosu-api-types":
+"tosu-api-types@workspace:^, tosu-api-types@workspace:packages/tosu-api-types":
   version: 0.0.0-use.local
   resolution: "tosu-api-types@workspace:packages/tosu-api-types"
   dependencies:
@@ -4249,6 +4249,7 @@ __metadata:
     openapi-fetch: "npm:^0.14.0"
     openapi-typescript: "npm:^7.8.0"
     rimraf: "npm:^6.0.1"
+    tosu-api-types: "workspace:^"
     ts-json-schema-generator: "npm:^2.4.0"
     tsx: "npm:^4.20.2"
     typescript: "npm:^5.8.3"

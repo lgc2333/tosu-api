@@ -41,5 +41,7 @@ export const defaultMiddleware: Middleware = {
 }
 
 export function createClient<M extends MediaType = MediaType>(options: ClientOptions) {
-  return createClientOriginal<paths, M>(options).use(defaultMiddleware)
+  const cli = createClientOriginal<paths, M>(options)
+  cli.use(defaultMiddleware)
+  return cli
 }

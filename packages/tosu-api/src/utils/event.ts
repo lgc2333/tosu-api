@@ -40,11 +40,12 @@ export class TypedEventTarget<E extends Record<string, Event>> extends EventTarg
   }
 }
 
-export class TypedCustomEvent<T extends string, D> extends CustomEvent<D> {
-  constructor(
-    public readonly type: T,
-    init: CustomEventInit<D>,
-  ) {
-    super(type, init)
-  }
+// idk why i use a custom class extend the CustomEvent
+// event handlers won't run
+export interface TypedCustomEvent<T extends string, D> extends CustomEvent<D> {
+  type: T
+}
+// eslint-disable-next-line ts/no-redeclare
+export const TypedCustomEvent = CustomEvent as {
+  new <T extends string, D>(type: T, init: CustomEventInit<D>): TypedCustomEvent<T, D>
 }

@@ -16,40 +16,6 @@ export type WsQueryParams<O extends WsInfoMap, K extends WsPath<O>> = O[K]['para
 export type WsSendData<O extends WsInfoMap, K extends WsPath<O>> = O[K]['send']
 export type WsRecvData<O extends WsInfoMap, K extends WsPath<O>> = O[K]['recv']
 
-export namespace BasicWebSocket {
-  export enum ReadyState {
-    CONNECTING = 0,
-    OPEN = 1,
-    CLOSING = 2,
-    CLOSED = 3,
-  }
-
-  export const CONNECTING = ReadyState.CONNECTING
-  export const OPEN = ReadyState.OPEN
-  export const CLOSING = ReadyState.CLOSING
-  export const CLOSED = ReadyState.CLOSED
-}
-
-export interface BasicWebSocket {
-  readonly protocol: string
-  readonly readyState: BasicWebSocket.ReadyState
-  readonly url: string
-
-  close: (code?: number, reason?: string) => void
-  send: (data: string) => void
-
-  addEventListener: <K extends keyof WebSocketEventMap>(
-    type: K,
-    listener: (this: WebSocket, ev: WebSocketEventMap[K]) => any,
-    options?: boolean | AddEventListenerOptions,
-  ) => void
-  removeEventListener: <K extends keyof WebSocketEventMap>(
-    type: K,
-    listener: (this: WebSocket, ev: WebSocketEventMap[K]) => any,
-    options?: boolean | EventListenerOptions,
-  ) => void
-}
-
 // eslint-disable-next-line ts/consistent-type-definitions
 export type WebSocketClientEvents<M> = {
   open: TypedCustomEvent<'open', { event: Event }>
@@ -61,7 +27,7 @@ export type WebSocketClientEvents<M> = {
 
 export interface WSOptionsCommon {
   reconnectDelay?: number
-  webSocketFactory?: (url: string, protocols?: string | string[]) => BasicWebSocket
+  webSocketFactory?: (url: string, protocols?: string | string[]) => WebSocket
 }
 
 export type WSCPathOptions<O extends WsInfoMap, K extends WsPath<O>> =
@@ -81,7 +47,7 @@ export class WebSocketClient<
 > extends TypedEventTarget<WebSocketClientEvents<WsRecvData<O, P>>> {
   static readonly defaultConnectDelay = 5000
 
-  protected $ws: BasicWebSocket | null = null
+  protected $ws: WebSocket | null = null
   protected $stopped: boolean = true
   protected $reconnectTimer: ReturnType<typeof setTimeout> | null = null
 
@@ -98,7 +64,7 @@ export class WebSocketClient<
   }
 
   get connected(): boolean {
-    return this.$ws !== null && this.$ws.readyState === BasicWebSocket.OPEN
+    return this.$ws !== null && this.$ws.readyState === WebSocket.OPEN
   }
 
   buildUrl(): string {
@@ -123,7 +89,7 @@ export class WebSocketClient<
     return url
   }
 
-  protected $createWs(): BasicWebSocket {
+  protected $createWs(): WebSocket {
     if (this.$options.webSocketFactory) {
       return this.$options.webSocketFactory(this.buildUrl())
     }
@@ -139,6 +105,7 @@ export class WebSocketClient<
 
     this.$ws.addEventListener('close', (event) => {
       this.$ws = null
+      if (this.$stopped) return
       this.$reconnectTimer = setTimeout(
         () => this.reconnect(),
         this.$options.reconnectDelay ?? WebSocketClient.defaultConnectDelay,

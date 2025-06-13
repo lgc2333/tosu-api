@@ -5,6 +5,10 @@
   "description": "API wrapper for tosu",
   "author": "LgCookie <lgc2333@126.com>",
   "license": "MIT",
+  "keywords": [
+    "osu",
+    "tosu"
+  ],
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
@@ -16,7 +20,8 @@
     "clean": "rimraf dist tsconfig.tsbuildinfo"
   },
   "dependencies": {
-    "openapi-fetch": "^0.14.0"
+    "openapi-fetch": "^0.14.0",
+    "tosu-api-types": "workspace:^"
   },
   "devDependencies": {
     "@types/js-yaml": "^4",
