@@ -1,6 +1,6 @@
 {
   "name": "tosu-api",
-  "version": "4.10.0",
+  "version": "0.1.0",
   "packageManager": "yarn@4.9.2",
   "description": "API wrapper for tosu",
   "author": "LgCookie <lgc2333@126.com>",
