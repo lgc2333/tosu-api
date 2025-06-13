@@ -14,7 +14,7 @@
     "generate": "tsx ./scripts/generate-src.ts",
     "build:src": "tsc -b && dumble",
     "build": "yarn generate && yarn build:src",
-    "clean": "rimraf dist tsconfig.tsbuildinfo"
+    "clean": "rimraf dist tsconfig.tsbuildinfo src"
   },
   "devDependencies": {
     "dumble": "^0.2.2",

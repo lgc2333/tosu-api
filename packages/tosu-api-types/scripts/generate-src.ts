@@ -1,5 +1,6 @@
 import type { SpawnOptions } from 'node:child_process'
 import { spawn } from 'node:child_process'
+import { existsSync } from 'node:fs'
 import { cp, readFile, readdir, rm, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 
@@ -38,8 +39,15 @@ async function listFiles(dir: string, pfx: string, suffix: string): Promise<stri
 }
 
 async function main() {
-  await runSubProcess('git', ['switch', 'master'], { cwd: 'tosu' })
-  await runSubProcess('git', ['pull'], { cwd: 'tosu' })
+  if (existsSync('tosu')) {
+    await runSubProcess('git', ['pull'], { cwd: 'tosu' })
+  } else {
+    await runSubProcess(
+      'git',
+      ['clone', 'https://github.com/tosuapp/tosu', '--depth=1'],
+      {},
+    )
+  }
 
   await rm('src', { recursive: true, force: true })
 
