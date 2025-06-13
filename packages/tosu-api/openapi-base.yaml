@@ -1,0 +1,220 @@
+openapi: 3.1.0
+
+info:
+  title: Tosu HTTP
+  version: 1.0.0
+  description: ''
+
+servers:
+  - url: 'http://127.0.0.1:24050'
+
+paths:
+  /json:
+    get:
+      description: Example of `/ws` response
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TosuAPi'
+
+  /Songs/{path}:
+    parameters:
+      - name: path
+        in: path
+        required: false
+    get:
+      description: Show content of the file, or show list of files for a folder
+
+  /json/sc:
+    get:
+      description: Example of `/tokens` response
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/scAPI'
+
+  /backgroundImage:
+    get:
+      description: Current beatmap background.
+
+  /json/v2:
+    get:
+      description: Example of `/websocket/v2` response
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TosuAPi'
+
+  /files/beatmap/{path}:
+    parameters:
+      - name: path
+        in: path
+        required: false
+    get:
+      description: same as `/Songs/{path}`
+
+  /files/beatmap/background:
+    get:
+      description: Current beatmap background
+
+  /files/beatmap/audio:
+    get:
+      description: Audio for current beatmap
+
+  /files/beatmap/file:
+    get:
+      description: .osu file for current beatmap
+
+  /files/skin/{path}:
+    parameters:
+      - name: path
+        in: path
+        required: false
+    get:
+      description: similar as `/files/beatmap/{path}`, but for a skin
+
+  /api/calculate/pp:
+    get:
+      description: |
+        Calculate pp for beatmap with custom data
+        BY DEFAULT IT USES CURRENT BEATMAP (:))
+        All parameters are optional
+      parameters:
+        - name: path
+          in: query
+          required: false
+          description: 'Path to .osu file. Example: C:/osu/Songs/beatmap/file.osu'
+          schema:
+            deprecated: false
+            type: string
+        - name: lazer
+          in: query
+          required: false
+          description: true or false
+          schema:
+            deprecated: false
+            type: boolean
+        - name: mode
+          in: query
+          required: false
+          description: osu = 0, taiko = 1, catch = 2, mania = 3
+          schema:
+            deprecated: false
+            type: integer
+            enum:
+              - '0'
+              - '1'
+              - '2'
+              - '3'
+        - name: mods
+          in: query
+          required: false
+          description: >-
+            Mods id or Array of mods. Example: 64 - DT or [ { acronym: "DT",
+            settings": { speed_change: 1.3 } } ]
+          schema:
+            deprecated: false
+            type: string
+        - name: acc
+          in: query
+          required: false
+          description: Accuracy % from 0 to 100
+          schema:
+            deprecated: false
+            type: number
+        - name: nGeki
+          in: query
+          required: false
+          description: Amount of Geki (300g / MAX)
+          schema:
+            deprecated: false
+            type: integer
+        - name: nKatu
+          in: query
+          required: false
+          description: Amount of Katu (100k / 200)
+          schema:
+            deprecated: false
+            type: integer
+        - name: n300
+          in: query
+          required: false
+          description: Amount of 300
+          schema:
+            deprecated: false
+            type: integer
+        - name: n100
+          in: query
+          required: false
+          description: Amount of 100
+          schema:
+            deprecated: false
+            type: integer
+        - name: n50
+          in: query
+          required: false
+          description: Amount of 50
+          schema:
+            deprecated: false
+            type: integer
+        - name: sliderEndHits
+          in: query
+          required: false
+          description: Amount of slider ends hits (lazer only)
+          schema:
+            deprecated: false
+            type: integer
+        - name: smallTickHits
+          in: query
+          required: false
+          description: Amount of slider small ticks hits (lazer only)
+          schema:
+            deprecated: false
+            type: integer
+        - name: largeTickHits
+          in: query
+          required: false
+          description: Amount of slider large ticks hits (lazer only)
+          schema:
+            deprecated: false
+            type: integer
+        - name: nMisses
+          in: query
+          required: false
+          description: Amount of Misses
+          schema:
+            deprecated: false
+            type: integer
+        - name: combo
+          in: query
+          required: false
+          description: combo
+          schema:
+            deprecated: false
+            type: integer
+        - name: passedObjects
+          in: query
+          required: false
+          description: Sum of nGeki, nKatu, n300, n100, n50, nMisses
+          schema:
+            deprecated: false
+            type: integer
+        - name: clockRate
+          in: query
+          required: false
+          description: 'Map rate number. Example: 1.5 = DT'
+          schema:
+            deprecated: false
+            type: number
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PerformanceAttributes'

@@ -79,6 +79,8 @@ async function main() {
     'src/server/counters.types.ts',
   )
 
+  await cp('scripts/rosu-pp.ts', 'src/rosu-pp.ts')
+
   const exports = (await listFiles('src', './', '.ts')).map(
     (x) => `export * from '${x}'`,
   )

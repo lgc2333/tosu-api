@@ -161,3 +161,9 @@ dist
 .ionide
 
 # End of https://www.toptal.com/developers/gitignore/api/node,visualstudiocode
+
+packages/tosu-api-types/src
+packages/tosu-api-types/tosu
+
+schemas.json
+openapi.json

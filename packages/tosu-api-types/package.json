@@ -17,6 +17,7 @@
     "clean": "rimraf dist tsconfig.tsbuildinfo src"
   },
   "devDependencies": {
+    "@kotrikd/rosu-pp": "^3.0.1",
     "dumble": "^0.2.2",
     "esbuild": "^0.25.5",
     "rimraf": "^6.0.1",

@@ -11,10 +11,16 @@
     "build": "tsc -b && dumble",
     "clean": "rimraf dist tsconfig.tsbuildinfo"
   },
+  "dependencies": {
+    "openapi-fetch": "^0.14.0"
+  },
   "devDependencies": {
+    "@types/js-yaml": "^4",
     "dumble": "^0.2.2",
     "esbuild": "^0.25.5",
+    "js-yaml": "^4.1.0",
     "rimraf": "^6.0.1",
+    "ts-json-schema-generator": "^2.4.0",
     "tsx": "^4.20.2",
     "typescript": "^5.8.3"
   }
