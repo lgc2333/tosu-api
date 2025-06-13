@@ -167,3 +167,4 @@ packages/tosu-api-types/tosu
 
 schemas.json
 openapi.json
+packages/tosu-api/src/openapi.ts

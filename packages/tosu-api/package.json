@@ -2,13 +2,17 @@
   "name": "tosu-api",
   "version": "4.10.0",
   "packageManager": "yarn@4.9.2",
+  "description": "API wrapper for tosu",
   "author": "LgCookie <lgc2333@126.com>",
   "license": "MIT",
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc -b && dumble",
+    "generate:def": "tsx scripts/generate-schema.ts",
+    "generate:src": "tsx scripts/generate-openapi.ts && prettier -cw src",
+    "generate": "yarn generate:def && yarn generate:src",
+    "build": "yarn generate && tsc -b && dumble",
     "clean": "rimraf dist tsconfig.tsbuildinfo"
   },
   "dependencies": {
@@ -19,6 +23,7 @@
     "dumble": "^0.2.2",
     "esbuild": "^0.25.5",
     "js-yaml": "^4.1.0",
+    "openapi-typescript": "^7.8.0",
     "rimraf": "^6.0.1",
     "ts-json-schema-generator": "^2.4.0",
     "tsx": "^4.20.2",

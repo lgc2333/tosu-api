@@ -2,6 +2,7 @@
   "name": "tosu-api-types",
   "version": "4.10.0",
   "packageManager": "yarn@4.9.2",
+  "description": "Type definitions used by tosu-api package, derived from the official tosu codebase",
   "author": "Mikhail Babynichev",
   "contributors": [
     "LgCookie <lgc2333@126.com>"

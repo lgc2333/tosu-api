@@ -3,16 +3,7 @@ import eslintConfigPrettier from 'eslint-config-prettier/flat'
 import { globalIgnores } from 'eslint/config'
 
 export default antfu(
-  {
-    toml: false,
-    jsonc: {
-      overrides: [
-        {
-          'antfu/consistent-list-newline': 'off',
-        },
-      ],
-    },
-  },
+  { toml: false },
   {
     rules: {
       ...eslintConfigPrettier.rules,
