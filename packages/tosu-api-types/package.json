@@ -1,5 +1,5 @@
 {
-  "name": "tosu-types",
+  "name": "tosu-api-types",
   "version": "4.10.0",
   "packageManager": "yarn@4.9.2",
   "author": "Mikhail Babynichev",
