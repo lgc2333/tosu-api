@@ -8,7 +8,9 @@
   "packageManager": "yarn@4.9.2",
   "scripts": {
     "build": "yarn workspaces foreach -Wpt run build",
-    "clean": "yarn workspaces foreach -Wpt run clean"
+    "clean": "yarn workspaces foreach -Wpt run clean",
+    "pub": "yarn build && yakumo publish",
+    "pub-now": "yakumo publish"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.14.1",
@@ -19,6 +21,7 @@
     "eslint-config-prettier": "^10.1.5",
     "prettier": "^3.5.3",
     "tsx": "^4.20.1",
-    "typescript": "^5.8.3"
+    "typescript": "^5.8.3",
+    "yakumo": "^1.0.0"
   }
 }

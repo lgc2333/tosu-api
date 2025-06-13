@@ -1,6 +1,6 @@
 {
   "name": "tosu-api",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "packageManager": "yarn@4.9.2",
   "description": "API wrapper for tosu",
   "author": "LgCookie <lgc2333@126.com>",
@@ -12,6 +12,9 @@
   "main": "dist/index.cjs",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "generate:def": "tsx scripts/generate-schema.ts",
     "generate:src": "tsx scripts/generate-openapi.ts && prettier -cw src",
