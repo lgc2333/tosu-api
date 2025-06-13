@@ -4044,9 +4044,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tosu-types@workspace:packages/tosu-types":
+"tosu-api-types@workspace:packages/tosu-api-types":
   version: 0.0.0-use.local
-  resolution: "tosu-types@workspace:packages/tosu-types"
+  resolution: "tosu-api-types@workspace:packages/tosu-api-types"
+  dependencies:
+    dumble: "npm:^0.2.2"
+    esbuild: "npm:^0.25.5"
+    rimraf: "npm:^6.0.1"
+    tsx: "npm:^4.20.2"
+    typescript: "npm:^5.8.3"
+  languageName: unknown
+  linkType: soft
+
+"tosu-api@workspace:packages/tosu-api":
+  version: 0.0.0-use.local
+  resolution: "tosu-api@workspace:packages/tosu-api"
   dependencies:
     dumble: "npm:^0.2.2"
     esbuild: "npm:^0.25.5"

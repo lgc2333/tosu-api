@@ -38,8 +38,8 @@ async function listFiles(dir: string, pfx: string, suffix: string): Promise<stri
 }
 
 async function main() {
-  await runSubProcess('git', ['switch', 'master'], { cwd: './tosu' })
-  await runSubProcess('git', ['pull'], { cwd: './tosu' })
+  await runSubProcess('git', ['switch', 'master'], { cwd: 'tosu' })
+  await runSubProcess('git', ['pull'], { cwd: 'tosu' })
 
   await rm('src', { recursive: true, force: true })
 
