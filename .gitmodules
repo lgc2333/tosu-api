@@ -1,0 +1,3 @@
+[submodule "packages/tosu-types/tosu"]
+	path = packages/tosu-types/tosu
+	url = https://github.com/tosuapp/tosu

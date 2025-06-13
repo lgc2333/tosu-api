@@ -1,0 +1,25 @@
+{
+  "name": "@root/tosu",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
+  "packageManager": "yarn@4.9.2",
+  "scripts": {
+    "build": "yarn workspaces foreach -Wpt run build",
+    "clean": "yarn workspaces foreach -Wpt run clean"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.14.1",
+    "@prettier/plugin-xml": "^3.4.1",
+    "@trivago/prettier-plugin-sort-imports": "^5.2.2",
+    "@types/node": "^24.0.0",
+    "eslint": "^9.28.0",
+    "eslint-config-prettier": "^10.1.5",
+    "prettier": "^3.5.3",
+    "tsx": "^4.20.1",
+    "typescript": "^5.8.3"
+  }
+}
